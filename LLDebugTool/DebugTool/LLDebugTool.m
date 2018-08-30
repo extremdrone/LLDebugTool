@@ -38,9 +38,9 @@ static LLDebugTool *_instance = nil;
 
 @interface LLDebugTool ()
 
-@property (nonatomic , strong) LLWindow *window;
+@property (nonatomic , strong , nonnull) LLWindow *window;
 
-@property (nonatomic , copy) NSString *versionNumber;
+@property (nonatomic , copy , nonnull) NSString *versionNumber;
 
 @end
 
@@ -110,7 +110,7 @@ static LLDebugTool *_instance = nil;
     [self.window.windowViewController showDebugViewControllerWithIndex:index];
 }
 
-- (void)logInFile:(NSString *)file function:(NSString *)function lineNo:(int)lineNo level:(LLConfigLogLevel)level onEvent:(NSString *)onEvent message:(NSString *)message, ...  {
+- (void)logInFile:(NSString *)file function:(NSString *)function lineNo:(NSInteger)lineNo level:(LLConfigLogLevel)level onEvent:(NSString *)onEvent message:(NSString *)message {
     if (![LLConfig sharedConfig].showDebugToolLog) {
         NSArray *toolEvent = @[kLLLogHelperDebugToolEvent,kLLLogHelperFailedLoadingResourceEvent];
         if ([toolEvent containsObject:onEvent]) {
